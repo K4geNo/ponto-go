@@ -1,28 +1,40 @@
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { LOGIN_USER } from '@/graphql/mutations'
 import { getUserIdFromJWT } from '@/utils/get-userId-from-jwt'
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/navigation'
 
+interface UserProps {
+    id: string
+    role: {
+        name: string
+    }
+}
+
 export const useAuth = () => {
     const [login, { loading, error }] = useMutation(LOGIN_USER)
     const router = useRouter()
 
-    const [user, setUser] = useState(() => {
+    const [user, setUser] = useState<UserProps | null>(null)
+
+    useEffect(() => {
         const { '@token': token } = parseCookies()
 
         if (token) {
             const userId = getUserIdFromJWT(token)
 
             if (userId) {
-                return { id: userId }
+                setUser({
+                    id: userId,
+                    role: {
+                        name: parseCookies()['@role'],
+                    },
+                })
             }
         }
-
-        return null
-    })
+    }, [setUser])
 
     const handleLogin = useCallback(
         async (identifier: string, password: string) => {
