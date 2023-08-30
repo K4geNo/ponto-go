@@ -11,7 +11,7 @@ interface PlanListProps {
 /**
  * Renders the list of features of a plan.
  * @param {string[]} features - The list of features of a plan.
- * @returns {JSX.Element} - The JSX element representing the list of features of a plan.
+ * @returns A React component representing the list of features of a plan.
  */
 export function PlanList({ features, offFeatures }: PlanListProps) {
     return (

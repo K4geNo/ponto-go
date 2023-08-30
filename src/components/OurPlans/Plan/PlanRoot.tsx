@@ -8,9 +8,9 @@ interface PlanRootProps extends FlexProps {
  * Renders the root component for a plan.
  * @param {Children} children - The props object containing the children to be rendered inside the PlanRoot component.
  * @param {FlexProps} ...props - The props object containing the props to be spread into the Flex component.
- * @returns {JSX.Element} - A JSX Element representing the PlanRoot component.
+ * @returns A React component representing the root component for a plan.
  */
-export function PlanRoot({ children, ...props }: PlanRootProps): JSX.Element {
+export function PlanRoot({ children, ...props }: PlanRootProps) {
     return (
         <Flex
             flexDir="column"

@@ -11,7 +11,7 @@ interface PlanContentProps {
  * @param {title} title - The title of the plan.
  * @param {price} price - The price of the plan.
  * @param {description} description - The description of the plan.
- * @returns {JSX.Element} - The JSX element representing the plan content.
+ * @returns A React component representing the content of a plan.
  */
 export function PlanContent({ title, price, description }: PlanContentProps) {
     return (
