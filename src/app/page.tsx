@@ -1,8 +1,10 @@
 'use client'
 
-import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 
 import { Brands } from '@/components/Brands'
+import { Copyright } from '@/components/Footer/Copyright'
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeroSection } from '@/components/HeroSection'
 import { OurPlans } from '@/components/OurPlans'
@@ -46,6 +48,8 @@ export default function Home() {
                 <Brands />
                 <OurPlans />
             </Container>
+
+            <Footer />
         </Box>
     )
 }
