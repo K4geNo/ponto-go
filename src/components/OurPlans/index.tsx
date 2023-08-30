@@ -2,7 +2,7 @@
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 
-import { Plans } from './plans'
+import { Plan } from './Plan'
 
 export function OurPlans() {
     return (
@@ -30,46 +30,61 @@ export function OurPlans() {
                 h="full"
                 justify="center"
                 mx="auto"
+                pos="relative"
             >
-                <Plans
-                    title="Plano Bronze"
-                    price="R$ 99,90"
-                    description="Plano ideal para quem está começando"
-                    features={[
-                        'Até 1000 clientes',
-                        'Até 1000 produtos',
-                        'Até 1000 pedidos',
-                    ]}
-                    zIndex={1}
-                    mr="-40px"
-                    opacity="0.9"
-                />
+                <Plan.Root opacity="0.3" mr="-2.5rem">
+                    <Plan.Content
+                        title="Plano Bronze"
+                        price="R$ 30"
+                        description="Uso de 5 colaboradores"
+                    />
 
-                <Plans
-                    title="Plano Prata"
-                    price="R$ 50"
-                    description="Uso de 10 colaboradores"
-                    features={[
-                        'Até 1000 clientes',
-                        'Até 1000 produtos',
-                        'Até 1000 pedidos',
-                    ]}
-                    zIndex={2}
-                    h="491px"
-                />
+                    <Plan.List
+                        features={[
+                            'Área de meus registros',
+                            'Dashboard',
+                            'Acesso de 5 colaboradores',
+                        ]}
+                        offFeatures={['Suporte exclusivo', 'Email corporativo']}
+                    />
+                </Plan.Root>
 
-                <Plans
-                    title="Plano Bronze"
-                    price="R$ 99,90"
-                    description="Plano ideal para quem está começando"
-                    features={[
-                        'Até 1000 clientes',
-                        'Até 1000 produtos',
-                        'Até 1000 pedidos',
-                    ]}
-                    zIndex={1}
-                    ml="-40px"
-                />
+                <Plan.Root>
+                    <Plan.Content
+                        title="Plano Prata"
+                        price="R$ 50"
+                        description="Uso de 10 colaboradores"
+                    />
+
+                    <Plan.List
+                        features={[
+                            'Área de meus registros',
+                            'Dashboard',
+                            'Acesso de 5 colaboradores',
+                        ]}
+                        offFeatures={['Suporte exclusivo', 'Email corporativo']}
+                    />
+
+                    <Plan.Action />
+                </Plan.Root>
+
+                <Plan.Root opacity="0.3" ml="-2.5rem">
+                    <Plan.Content
+                        title="Plano Ouro"
+                        price="R$ 100"
+                        description="Uso de 20 colaboradores"
+                    />
+
+                    <Plan.List
+                        features={[
+                            'Área de meus registros',
+                            'Dashboard',
+                            'Acesso de 5 colaboradores',
+                            'Suporte exclusivo',
+                        ]}
+                        offFeatures={['Email corporativo']}
+                    />
+                </Plan.Root>
             </Flex>
         </Flex>
     )
