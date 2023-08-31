@@ -1,4 +1,3 @@
-
 # PontoGo
 
 Este é um dashboard de registro de pontos dos funcionários nele você será capaz de registrar um novo ponto ou visualizar seus pontos mais antigos e atuais.
