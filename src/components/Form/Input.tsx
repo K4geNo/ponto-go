@@ -15,6 +15,14 @@ interface InputProps extends ChakraInputProps {
     error?: FieldError
 }
 
+/**
+ * Input component that wraps ChakraUI Input component and adds form control and error handling.
+ * @param {string} name - The name of the input field.
+ * @param {string} [label] - The label of the input field.
+ * @param {FieldError} [error] - The error object returned by react-hook-form.
+ * @param {ChakraInputProps} rest - The rest of the props passed to ChakraUI Input component.
+ * @returns A Input component.
+ */
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     { name, label, error = null, ...rest },
     ref,

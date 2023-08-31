@@ -36,16 +36,15 @@ export function PointRecording({ children }: PointRecordingProps) {
 
     const currentDate = formattedDate(new Date())
 
-    const [createRegisteredTime] = useMutation(CREATE_REGISTERED_TIME)
+    const [createRegisteredTime, { loading }] = useMutation(
+        CREATE_REGISTERED_TIME,
+    )
 
     const handleCreateRegisteredTime = async () => {
         await createRegisteredTime({
             variables: {
                 timeRegistered: new Date(),
                 userId: Number(user?.id),
-            },
-            onCompleted: () => {
-                onClose()
             },
             refetchQueries: [
                 {
@@ -57,6 +56,8 @@ export function PointRecording({ children }: PointRecordingProps) {
                 },
             ],
         })
+
+        onClose()
     }
 
     return (
@@ -124,12 +125,13 @@ export function PointRecording({ children }: PointRecordingProps) {
                         rowGap="0.625rem"
                     >
                         <Button
-                            colorScheme="blue"
+                            colorScheme="none"
                             h="50px"
                             minW="200px"
                             bg="primary"
                             fontWeight="normal"
                             onClick={handleCreateRegisteredTime}
+                            isLoading={loading}
                         >
                             Bater ponto
                         </Button>
@@ -141,6 +143,7 @@ export function PointRecording({ children }: PointRecordingProps) {
                             minW="200px"
                             fontWeight="normal"
                             color="primary"
+                            colorScheme="none"
                         >
                             Cancelar
                         </Button>

@@ -1,15 +1,11 @@
-import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react'
-
-import Image from 'next/image'
-
-// interface HeroSectionProps { }
+import { Button, Flex, Heading, Img, Stack, Text } from '@chakra-ui/react'
 
 export function HeroSection() {
     return (
-        <Flex align="center" justify="space-between" mt="3.125rem">
+        <Flex align="center" justify="space-between" mt={['4rem', '3.125rem']}>
             <Flex flexDir="column">
                 <Text
-                    fontSize="1.5rem"
+                    fontSize={['1rem', '1.5rem']}
                     fontWeight="300"
                     color="white"
                     letterSpacing="0.2475rem"
@@ -19,7 +15,7 @@ export function HeroSection() {
                 </Text>
 
                 <Heading
-                    fontSize="2.5rem"
+                    fontSize={['1.5rem', '2.5rem']}
                     fontWeight="extrabold"
                     color="white"
                     lineHeight="normal"
@@ -33,7 +29,7 @@ export function HeroSection() {
 
                 <Text
                     color="white"
-                    fontSize="1.125rem"
+                    fontSize={['1rem', '1.125rem']}
                     mt="0.9375rem"
                     fontWeight="500"
                 >
@@ -68,12 +64,16 @@ export function HeroSection() {
                 </Stack>
             </Flex>
 
-            <Image
+            <Img
                 src="/images/hero-virtual.png"
                 alt=""
-                width={600}
+                width={{
+                    lg: 400,
+                    xl: 600,
+                }}
+                objectFit="contain"
                 height={500}
-                quality={80}
+                display={['none', 'none', 'none', 'block']}
             />
         </Flex>
     )

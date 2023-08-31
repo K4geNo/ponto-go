@@ -15,9 +15,11 @@ export function Footer() {
                 borderColor="secondary"
                 w="full"
                 columnGap="3.75rem"
+                rowGap={['1.25rem', '0']}
+                flexDir={['column', 'row']}
             >
                 <Box color="white">
-                    <Heading fontSize="1.25rem" fontWeight="bold">
+                    <Heading fontSize={['1rem', '1.25rem']} fontWeight="bold">
                         @pontogo
                     </Heading>
                     <Text fontWeight="light" mt="5px">
@@ -25,7 +27,7 @@ export function Footer() {
                     </Text>
                 </Box>
 
-                <Stack direction="row" spacing="10" align="center">
+                <Stack direction="row" spacing={['5', '10']} align="center">
                     <Socials />
                 </Stack>
             </Flex>

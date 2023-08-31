@@ -20,14 +20,16 @@ import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const loginSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(8),
+    email: z.string().email({ message: 'O e-mail deve ser válido' }),
+    password: z.string().min(8, {
+        message: 'A senha deve ter no mínimo 8 caracteres',
+    }),
 })
 
 export type LoginSchemaType = z.infer<typeof loginSchema>
 
 export function LoginForm() {
-    const { login, loading } = useAuth()
+    const { login, loading, error } = useAuth()
 
     const [show, setShow] = useState(false)
 
@@ -103,6 +105,12 @@ export function LoginForm() {
             >
                 Entrar
             </Button>
+
+            {error && (
+                <Text color="red" textAlign="center">
+                    E-mail ou senha inválidos
+                </Text>
+            )}
         </Flex>
     )
 }

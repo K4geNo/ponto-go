@@ -2,7 +2,7 @@ import { Flex, Link } from '@chakra-ui/react'
 
 import NextLink from 'next/link'
 
-interface NavigationProps {
+export interface NavigationProps {
     navItem: {
         label: string
         href: string

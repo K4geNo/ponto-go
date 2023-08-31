@@ -3,7 +3,6 @@
 import { Box, Container } from '@chakra-ui/react'
 
 import { Brands } from '@/components/Brands'
-import { Copyright } from '@/components/Footer/Copyright'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeroSection } from '@/components/HeroSection'
@@ -42,7 +41,11 @@ export default function Home() {
                 zIndex: -1,
             }}
         >
-            <Container maxW="75rem" display="flex" flexDir="column">
+            <Container
+                maxW={['initial', '75rem']}
+                display="flex"
+                flexDir="column"
+            >
                 <Header />
                 <HeroSection />
                 <Brands />

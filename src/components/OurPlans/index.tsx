@@ -1,22 +1,24 @@
-// interface PlansProps { }
-
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 
 import { Plan } from './Plan'
 
 export function OurPlans() {
     return (
-        <Flex flexDir="column" align="center" mt="5.625rem">
+        <Flex flexDir="column" align="center" mt={['3.75rem', '5.625rem']}>
             <Box textAlign="center">
-                <Heading fontSize="2.5rem" color="white" fontWeight="extrabold">
+                <Heading
+                    fontSize={['1.5rem', '2.5rem']}
+                    color="white"
+                    fontWeight="extrabold"
+                >
                     Encontre o plano perfeito
                 </Heading>
 
                 <Text
                     color="white"
-                    fontSize="1.25rem"
+                    fontSize={['1rem', '1.25rem']}
                     opacity="0.7"
-                    w="40rem"
+                    w={['unset', '40rem']}
                     mt="0.625rem"
                 >
                     Escolha o plano que melhor se encaixa na sua empresa e faça
@@ -26,13 +28,17 @@ export function OurPlans() {
 
             <Flex
                 align="center"
-                pt="4.375rem"
+                pt={['2.5rem', '4.375rem']}
                 h="full"
                 justify="center"
                 mx="auto"
-                pos="relative"
+                pos={['relative']}
+                flexDirection={['column', 'row']}
             >
-                <Plan.Root opacity="0.3" mr="-2.5rem">
+                <Plan.Root
+                    opacity="0.3"
+                    mr={['unset', 'unset', '-10rem', '-2.5rem']}
+                >
                     <Plan.Content
                         title="Plano Bronze"
                         price="R$ 30"
@@ -68,7 +74,10 @@ export function OurPlans() {
                     <Plan.Action />
                 </Plan.Root>
 
-                <Plan.Root opacity="0.3" ml="-2.5rem">
+                <Plan.Root
+                    opacity="0.3"
+                    ml={['unset', 'unset', '-10rem', '-2.5rem']}
+                >
                     <Plan.Content
                         title="Plano Ouro"
                         price="R$ 100"

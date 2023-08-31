@@ -1,9 +1,10 @@
 'use client'
 
-import { Button, Flex, Image, Link } from '@chakra-ui/react'
+import { Button, Flex, Image, Link, Text } from '@chakra-ui/react'
 import { RiDashboardLine, RiShutDownLine } from 'react-icons/ri'
 
 import NextLink from 'next/link'
+import { PiNotepadLight } from 'react-icons/pi'
 import { useAuth } from '@/hooks/useAuth'
 import { useMemo } from 'react'
 
@@ -15,7 +16,7 @@ const NAV_ITEMS = [
     },
     {
         label: 'Meus registros',
-        icon: RiDashboardLine,
+        icon: PiNotepadLight,
         href: '/meus-registros',
     },
 ]
@@ -70,7 +71,7 @@ export function Sidebar() {
                         color="primary"
                     >
                         <RiDashboardLine size={24} />
-                        {item.label}
+                        <Text fontSize="0.875rem">{item.label}</Text>
                     </Flex>
                 </Link>
             ))}
