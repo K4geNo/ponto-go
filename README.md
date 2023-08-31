@@ -1,34 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# PontoGo
 
-First, run the development server:
+Este é um dashboard de registro de pontos dos funcionários nele você será capaz de registrar um novo ponto ou visualizar seus pontos mais antigos e atuais.
+
+## Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+- Node.js: [https://nodejs.org](https://nodejs.org)
+- Git: [https://git-scm.com](https://git-scm.com)
+
+## Clonar o Projeto
+
+Abra o terminal e execute o seguinte comando para clonar o projeto do repositório:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/K4geNo/ponto-go.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalar Dependências
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Navegue até o diretório do projeto usando o terminal:
+```bash
+cd ponto-go
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Instale as dependências do projeto executando:
+```bash
+npm install
 
-## Learn More
+ou
 
-To learn more about Next.js, take a look at the following resources:
+yarn install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Rodar projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Para iniciar o servidor de desenvolvimento, execute:
+```bash
+npm run dev
 
-## Deploy on Vercel
+ou
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+yarn dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O aplicativo estará disponível em http://localhost:3000. A página será recarregada automaticamente sempre que você fizer alterações no código.
+
+## Compilar o Projeto para Produção
+
+Se você quiser compilar o projeto para produção, execute:
+```bash
+npm run build
+
+ou
+
+yarn build
+```
+
+Isso criará uma versão otimizada do aplicativo na pasta .next.
+
+## Outros Comandos
+
+Executa a verificação de linting do código.
+```bash
+npm run lint
+
+ou
+
+yarn lint
+```
+## Stack utilizada
+
+**Front-end:** React, Next, Typescript e Chakra-UI
+
+
