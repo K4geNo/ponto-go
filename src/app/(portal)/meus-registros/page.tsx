@@ -1,28 +1,26 @@
 'use client'
 
-import { Flex, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
+import {
+    Flex,
+    Spinner,
+    Table,
+    Tbody,
+    Td,
+    Text,
+    Th,
+    Thead,
+    Tr,
+} from '@chakra-ui/react'
 import { formattedDate, formattedTime } from '@/utils/format-date'
 import { useCallback, useState } from 'react'
 
 import { Pagination } from '@/components/Pagination'
 import { PointRecording } from '@/components/PointRecording'
 import { REGISTERED_TIME } from '@/graphql/queries'
+import { RegisteredTimesData } from '@/interfaces/RegisterdTime'
+import { formatIdToDoubleNumbers } from '@/utils/format-id-to-double-numbers'
 import { useAuth } from '@/hooks/useAuth'
 import { useQuery } from '@apollo/client'
-
-interface RegisteredTime {
-    id: string
-    timeRegistered: string
-    user: {
-        id: string
-        name: string
-    }
-}
-
-export interface RegisteredTimesData {
-    registeredTimes: RegisteredTime[]
-    count: number
-}
 
 export default function MeusRegistros() {
     const { user } = useAuth()
@@ -30,7 +28,7 @@ export default function MeusRegistros() {
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
 
-    const { data } = useQuery<RegisteredTimesData>(REGISTERED_TIME, {
+    const { data, loading } = useQuery<RegisteredTimesData>(REGISTERED_TIME, {
         variables: {
             userId: Number(user?.id),
             limit: 7,
@@ -47,10 +45,12 @@ export default function MeusRegistros() {
         setCurrentPage((oldValue) => oldValue + 1)
     }, [])
 
-    function formatDate(date: Date) {
-        const format = formattedDate(date)
-
-        return format
+    if (loading) {
+        return (
+            <Flex flexDir="column" w="full" align="center" justify="center">
+                <Spinner thickness="4px" size={'xl'} />
+            </Flex>
+        )
     }
 
     return (
@@ -121,7 +121,9 @@ export default function MeusRegistros() {
                                     fontWeight="normal"
                                     opacity="0.5"
                                 >
-                                    {registered.user.id}
+                                    {formatIdToDoubleNumbers(
+                                        registered.user.id,
+                                    )}
                                 </Text>
                             </Td>
                             <Td bg="white">
@@ -131,7 +133,7 @@ export default function MeusRegistros() {
                                     color="grey"
                                     opacity="0.6"
                                 >
-                                    {formatDate(
+                                    {formattedDate(
                                         new Date(registered.timeRegistered),
                                     )}
                                 </Text>

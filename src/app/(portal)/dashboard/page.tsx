@@ -1,25 +1,39 @@
 'use client'
 
-import { Flex, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
+import {
+    Flex,
+    Spinner,
+    Table,
+    Tbody,
+    Td,
+    Text,
+    Th,
+    Thead,
+    Tr,
+} from '@chakra-ui/react'
 import { formattedDate, formattedTime } from '@/utils/format-date'
 import { useCallback, useState } from 'react'
 
 import { GET_ALL_REGISTERED_TIMES } from '@/graphql/queries'
 import { Pagination } from '@/components/Pagination'
-import { RegisteredTimesData } from '../meus-registros/page'
+import { RegisteredTimesData } from '@/interfaces/RegisterdTime'
+import { formatIdToDoubleNumbers } from '@/utils/format-id-to-double-numbers'
 import { useQuery } from '@apollo/client'
 
 export default function Dashboard() {
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
 
-    const { data } = useQuery<RegisteredTimesData>(GET_ALL_REGISTERED_TIMES, {
-        variables: {
-            limit: 7,
-            start: (currentPage - 1) * 7,
-            sort: 'timeRegistered:desc',
+    const { data, loading } = useQuery<RegisteredTimesData>(
+        GET_ALL_REGISTERED_TIMES,
+        {
+            variables: {
+                limit: 8,
+                start: (currentPage - 1) * 8,
+                sort: 'timeRegistered:desc',
+            },
         },
-    })
+    )
 
     const handlePreviousPage = useCallback(() => {
         setCurrentPage((oldValue) => oldValue - 1)
@@ -29,6 +43,14 @@ export default function Dashboard() {
         setCurrentPage((oldValue) => oldValue + 1)
     }, [])
 
+    if (loading) {
+        return (
+            <Flex flexDir="column" w="full" align="center" justify="center">
+                <Spinner thickness="4px" size={'xl'} />
+            </Flex>
+        )
+    }
+
     return (
         <Flex flexDir="column" pt="2.5rem" px="1.875rem" w="full">
             <Table>
@@ -37,7 +59,7 @@ export default function Dashboard() {
                         <Th
                             pl="0"
                             textTransform="capitalize"
-                            fontSize="22px"
+                            fontSize="1.375rem"
                             fontWeight="bold"
                             letterSpacing="0.44px"
                             color="grey"
@@ -46,7 +68,7 @@ export default function Dashboard() {
                         </Th>
                         <Th
                             textTransform="capitalize"
-                            fontSize="22px"
+                            fontSize="1.375rem"
                             fontWeight="bold"
                             letterSpacing="0.44px"
                             color="grey"
@@ -55,7 +77,7 @@ export default function Dashboard() {
                         </Th>
                         <Th
                             textTransform="capitalize"
-                            fontSize="22px"
+                            fontSize="1.375rem"
                             fontWeight="bold"
                             letterSpacing="0.44px"
                             color="grey"
@@ -66,7 +88,7 @@ export default function Dashboard() {
                 </Thead>
                 <Tbody>
                     {data?.registeredTimes.map((registered) => (
-                        <Tr pos="relative" py="14px" key={registered.id}>
+                        <Tr pos="relative" py="0.875rem" key={registered.id}>
                             <Td
                                 bg="white"
                                 pl="3.75rem"
@@ -95,12 +117,14 @@ export default function Dashboard() {
                                     fontWeight="normal"
                                     opacity="0.5"
                                 >
-                                    {registered.user.id}
+                                    {formatIdToDoubleNumbers(
+                                        registered.user.id,
+                                    )}
                                 </Text>
                             </Td>
                             <Td bg="white">
                                 <Text
-                                    fontSize="22px"
+                                    fontSize="1.375rem"
                                     fontWeight="normal"
                                     color="grey"
                                     opacity="0.6"
@@ -112,7 +136,7 @@ export default function Dashboard() {
                             </Td>
                             <Td bg="white">
                                 <Text
-                                    fontSize="22px"
+                                    fontSize="1.375rem"
                                     fontWeight="normal"
                                     color="grey"
                                     opacity="0.6"
