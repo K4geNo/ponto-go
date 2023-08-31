@@ -69,7 +69,6 @@ export const useAuth = () => {
                 return data.login
             } catch (error) {
                 console.log(error)
-                throw new Error('Falha ao fazer login')
             }
         },
         [login, router],
