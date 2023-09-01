@@ -32,8 +32,8 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
             {!!label && (
                 <FormLabel
                     htmlFor={name}
-                    fontSize={'sm'}
-                    fontWeight={'medium'}
+                    fontSize={'1.25rem'}
+                    fontWeight={'normal'}
                     color={'grey'}
                 >
                     {label}

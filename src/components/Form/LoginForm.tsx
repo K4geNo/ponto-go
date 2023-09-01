@@ -51,6 +51,8 @@ export function LoginForm() {
             flexDir="column"
             as="form"
             onSubmit={handleSubmit(onSubmit)}
+            minW="25rem"
+            w="full"
         >
             <Input
                 label="E-mail"
@@ -76,7 +78,7 @@ export function LoginForm() {
                         cursor="pointer"
                         pos="absolute"
                         right="1.25rem"
-                        bottom="-1.5625rem"
+                        bottom="-2.2rem"
                         boxSize="1.5rem"
                     />
                 </InputRightElement>

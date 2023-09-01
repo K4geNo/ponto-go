@@ -60,7 +60,9 @@ export default function Login() {
                     />
                 </Link>
 
-                <Heading>Faça login</Heading>
+                <Heading fontSize={'2.5rem'} color="primary">
+                    Faça login
+                </Heading>
 
                 <LoginForm />
             </Flex>
